@@ -24,12 +24,12 @@
 const map = L.map("mapdiv", { zoomControl: false });
 
 // Set a center point and zoom level for it:
-const vingtNeufRueDUlm = L.latLng([48.843495, 2.344888]);
-const zoomLevel = 17;
+const newyorkcity = L.latLng([40.712207, -73.939589]);
+const zoomLevel = 10.3;
 
 // Now set the view of the map and add a tile layer:
-map.setView(vingtNeufRueDUlm, zoomLevel);
-L.tileLayer.provider("Stamen.Watercolor").addTo(map);
+map.setView(newyorkcity, zoomLevel);
+L.tileLayer.provider("Esri.WorldImagery").addTo(map);
 
 // If you prefer a different tile layer, see your options here:
 // https://leaflet-extras.github.io/leaflet-providers/preview/
@@ -38,14 +38,14 @@ L.tileLayer.provider("Stamen.Watercolor").addTo(map);
 // "OpenStreetMap.Mapnik" or "Stamen.Toner"
 
 // Add a marker for where we're at:
-const vingtNeufMarker = L.marker(vingtNeufRueDUlm).addTo(map);
+const grandstMarker = L.marker(newyorkcity).addTo(map);
 
 // Now add a popup to it:
-vingtNeufMarker.bindPopup("<h3>Hello from 29 rue d’Ulm!</h3>");
+grandstMarker.bindPopup("<h3>Hello from the Grand St Station!</h3>");
 
 // Use Markdown, instead:
 const md = markdownit({html: true}).use(markdownitFootnote);
-vingtNeufMarker.bindPopup(md.render("### Hello from 29 rue d’Ulm and the [NYU/PSL Workshop](https://wp.nyu.edu/nyupslgeo/workshop/)!"));
+grandstMarker.bindPopup(md.render("### Hello from the [Grand St Station](http://web.mta.info/nyct/service/lline.htm)!"));
 
 // Use d3 to parse the places.csv csv file.
 //
